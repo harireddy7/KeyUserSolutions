@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Link } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import FontAwesome from 'react-fontawesome';
 
 const useStyles = makeStyles(theme => ({

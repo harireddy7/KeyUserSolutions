@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import FontAwesome from 'react-fontawesome';
-import { useHistory, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -108,19 +108,18 @@ export const menuItems = [
 const Header = () => {
   const [drawer, setDrawer] = useState(false);
   const classes = useStyles();
-  const history = useHistory();
 
   const toggleDrawer = () => {
     setDrawer(!drawer);
   };
 
-  const navigateToPage = page => {
-    history.push(page);
-  };
+  // const navigateToPage = page => {
+  //   history.push(page);
+  // };
 
-  const navigateDesktop = path => {
-    navigateToPage(path);
-  };
+  // const navigateDesktop = path => {
+  //   navigateToPage(path);
+  // };
 
   const navigateMobile = path => {
     toggleDrawer(false);
@@ -137,7 +136,6 @@ const Header = () => {
           key={menu.label}
           className={classes.menuItem}
           activeClassName={classes.activePage}
-          // onClick={() => navigateDesktop(menu.path)}
         >
           {menu.label}
         </Button>

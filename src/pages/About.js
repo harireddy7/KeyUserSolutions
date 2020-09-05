@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Typography, Grid, Card, CardMedia, CardContent, Divider, CardActions, Button } from '@material-ui/core';
+import { Typography, Card, CardMedia, CardContent, Divider, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 import aboutUsImg from '../assets/team.png';

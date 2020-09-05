@@ -1,22 +1,9 @@
 import React from 'react';
-import {
-  Typography,
-  Divider,
-  Card,
-  CardContent,
-  CardMedia,
-  CardHeader,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Link
-} from '@material-ui/core';
+import { Typography, Divider, Card, CardContent, CardMedia, CardHeader, Link } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 
 import contactImg from '../assets/contact.png';
 import SocialMedia from '../components/SocialMedia';
-import FontAwesome from 'react-fontawesome';
 import Address from '../components/Address';
 import ContactForm from '../components/ContactForm';
 

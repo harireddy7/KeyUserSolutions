@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Divider, Card, CardContent, CardMedia } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import Bio from '../components/Bio';
 import servicesList, { clientsList } from '../utils/services-data';
 import ServiceCard from '../components/ServiceCard';
 

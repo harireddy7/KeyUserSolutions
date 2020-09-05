@@ -1,20 +1,8 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/styles';
-import {
-  Grid,
-  Card,
-  CardActions,
-  CardHeader,
-  Divider,
-  ListItem,
-  List,
-  Typography,
-  ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+import { ListItem, List, Typography } from '@material-ui/core';
 import { menuItems } from './Header';
 import { NavLink } from 'react-router-dom';
-import FontAwesome from 'react-fontawesome';
 import SocialMedia from '../components/SocialMedia';
 import Address from '../components/Address';
 
