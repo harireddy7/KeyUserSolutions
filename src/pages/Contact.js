@@ -1,9 +1,8 @@
 import React from 'react';
-import { Typography, Divider, Card, CardContent, CardMedia, CardHeader, Link } from '@material-ui/core';
+import { Typography, Divider, Card, CardContent, CardMedia, CardHeader } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 
 import contactImg from '../assets/contact.png';
-import SocialMedia from '../components/SocialMedia';
 import Address from '../components/Address';
 import ContactForm from '../components/ContactForm';
 
@@ -139,13 +138,7 @@ const Contact = () => {
             <Divider className={classes.titleDivider} variant="middle" />
             <CardContent>
               <Typography className={classes.subtitle1} variant="subtitle1">
-                <Link
-                  href="https://maps.google.com/?q=Hyderabad,Telangana"
-                  target="blank"
-                  classes={{ root: classes.addressText }}
-                >
-                  2-119/cp/402, Nizampet Village, Hyderabad 500090
-                </Link>
+                2-119/cp/402, Nizampet Village, Hyderabad 500090
               </Typography>
             </CardContent>
           </Card>
@@ -154,13 +147,6 @@ const Contact = () => {
             <Divider className={classes.titleDivider} variant="middle" />
             <CardContent style={{ paddingTop: '0.2rem' }}>
               <Address addressList={addressList} themeType={theme.palette.type} />
-            </CardContent>
-          </Card>
-          <Card className={classes.socialMedia}>
-            <CardHeader title="Social Connect" classes={{ title: classes.headerTitle }} />
-            <Divider className={classes.titleDivider} variant="middle" />
-            <CardContent>
-              <SocialMedia addressList={addressList} themeType={theme.palette.type} iconSize="2x" />
             </CardContent>
           </Card>
         </div>

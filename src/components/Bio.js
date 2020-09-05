@@ -21,19 +21,19 @@ const bioSections = [
     label: 'Our Mission',
     icon: 'rocket',
     content:
-      'To capitalize on the efficiency of Information Technology Industry to serve Clients. WE strive constantly to make KeyUser Solutions a winning competitor.'
+      'To capitalize on the efficiency of Information Technology Industry to serve Clients. WE strive constantly to make KUS a winning competitor.'
   },
   {
     label: 'Our Vision',
     icon: 'lightbulb-o',
     content:
-      'Keyusers provides demand-driven supply chain management and enterprise software solutions that drive value for companies regardless of market conditions.'
+      'KUS provides demand-driven supply chain management and enterprise software solutions that drive value for companies regardless of market conditions.'
   },
   {
     label: 'Our Values',
     icon: 'users',
     content:
-      'Keyusers provides exceptional thought leadership to every industry, with particular expertise in subscription-based e-commerce and financial services enterprises.'
+      'KUS provides exceptional thought leadership to every industry, with particular expertise in subscription-based e-commerce and financial services enterprises.'
   }
 ];
 

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 
 * {
   margin: 0;
@@ -23,4 +23,8 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.font-bold {
+  font-family: 'Roboto', sans-serif !important;
 }

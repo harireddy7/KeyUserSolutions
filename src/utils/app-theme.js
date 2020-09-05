@@ -2,7 +2,8 @@ const { createMuiTheme } = require('@material-ui/core');
 
 const appTheme = createMuiTheme({
   typography: {
-    fontFamily: "'Poppins', 'sans-serif'"
+    fontFamily: "'Poppins', 'sans-serif'",
+    fontFamilyRoboto: "'Roboto', sans-serif"
   },
   palette: {
     primary: {

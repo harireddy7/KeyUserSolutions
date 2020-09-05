@@ -94,7 +94,7 @@ const Home = () => {
         <Card elevation={0} className={classes.showcaseContent}>
           <CardContent>
             <Typography component="h3" color="primary" className={classes.title}>
-              Welcome To SAP Solutions
+              Welcome To <span title="KeyUser Solutions">KUS</span>
             </Typography>
             <Divider className={classes.titleDivider} variant="middle" />
             <Typography variant="subtitle1" className={`${classes.subTitle} bg-shape-1`}>

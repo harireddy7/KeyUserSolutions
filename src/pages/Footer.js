@@ -1,25 +1,26 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/styles';
-import { ListItem, List, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import { ListItem, List } from '@material-ui/core';
 import { menuItems } from './Header';
 import { NavLink } from 'react-router-dom';
-import SocialMedia from '../components/SocialMedia';
-import Address from '../components/Address';
+import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(theme => ({
   footerWrapper: {
-    color: theme.palette.light.light,
-    background: theme.palette.primary.dark,
+    color: theme.palette.primary.dark,
+    background: theme.palette.light.dark,
     display: 'flex',
     flexDirection: 'column'
   },
-  socialRoutes: {
+  footerTitle: {
+    fontFamily: theme.typography.fontFamilyRoboto
+  },
+  footerLogoRoutes: {
+    paddingTop: '1rem',
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    padding: '2rem 2rem 0',
     '@media (min-width: 501px)': {
-      // padding: '1rem 1rem 0',
       justifyContent: 'center'
     },
     '@media (max-width: 500px)': {
@@ -42,47 +43,30 @@ const useStyles = makeStyles(theme => ({
   },
   menuListItem: {
     padding: '0.5rem 0',
-    color: theme.palette.light.light,
+    color: theme.palette.primary.dark,
     fontWeight: 'normal',
+    transition: '0.3s transform ease-in-out',
     '&::before': {
       content: '">"',
       marginRight: '5px'
-    }
-  },
-  socialAddress: {
-    flex: 1.2,
-    padding: '1rem 0.5rem 0',
-    color: theme.palette.light.light,
-    display: 'flex',
-    justifyContent: 'space-between',
-    '@media (max-width: 950px)': {
-      display: 'block'
     },
-    '@media (min-width: 501px)': {
-      alignItems: 'center'
+    '&:hover': {
+      transition: '0.3s transform ease-in-out',
+      transform: 'translateX(10px) scale(1.1)'
     }
   },
-  address: {
+  footerLogo: {
+    flex: 1,
+    color: theme.palette.light.light,
     display: 'flex',
     justifyContent: 'center',
-    flexDirection: 'column',
-    marginTop: '5px'
-  },
-  addressItem: {
-    padding: '0.5rem 0',
-    color: theme.palette.light.light,
-    fontWeight: 'normal'
-  },
-  addressIcon: {
-    color: theme.palette.light.main,
-    fontSize: '1.5rem',
-    minWidth: '30px',
-    maxWidth: '30px',
-    height: '30px'
+    '& > img': {
+      width: '250px'
+    }
   },
   copy: {
-    background: theme.palette.primary.dark,
-    color: theme.palette.light.main,
+    color: theme.palette.primary.dark,
+    background: theme.palette.light.dark,
     padding: '1rem 5px',
     textAlign: 'center',
     '@media (max-width:400px)': {
@@ -91,20 +75,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const addressList = [
-  { content: 'Nizampet, Hyderabad 500090', icon: 'map-marker', link: 'https://maps.google.com/?q=Hyderabad,Telangana' },
-  { content: '7989785982', icon: 'phone', link: 'tel://7989785982' },
-  { content: 'sales@keyusersolutions.com', icon: 'envelope', link: 'mailto:sales@keyusersolutions.com' }
-];
-
 const Footer = () => {
   const classes = useStyles();
-  const theme = useTheme();
   return (
     <div className={classes.footerWrapper}>
-      <div className={classes.socialRoutes}>
+      <div className={classes.footerLogoRoutes}>
         <div className={classes.routes}>
-          <Typography variant="h6">SAP SOLS</Typography>
           <List className={classes.menuList}>
             {menuItems.map(menu => (
               <ListItem to={menu.path} exact component={NavLink} key={menu.label} className={classes.menuListItem}>
@@ -113,12 +89,11 @@ const Footer = () => {
             ))}
           </List>
         </div>
-        <div className={classes.socialAddress}>
-          <SocialMedia />
-          <Address addressList={addressList} themeType={theme.palette.type === 'light' ? 'dark' : 'light'} />
+        <div className={classes.footerLogo}>
+          <img src={logo} alt="logo" />
         </div>
       </div>
-      <div className={classes.copy}>&copy; CopyRight AllRights Reserved By SAP SOLS</div>
+      <div className={classes.copy}>&copy; CopyRight AllRights Reserved By KeyUser</div>
     </div>
   );
 };

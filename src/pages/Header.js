@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     boxShadow: 'none',
-    background: theme.palette.light.main
+    background: theme.palette.light.main,
+    justifyContent: 'space-between'
   },
   desktopNav: {
     display: 'none',
@@ -41,19 +42,26 @@ const useStyles = makeStyles(theme => ({
     color: 'inherit'
   },
   title: {
-    flexGrow: 1,
+    // flexGrow: 1,
+    textAlign: 'center',
     fontWeight: 'bold',
     textDecoration: 'none',
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+    fontFamily: theme.typography.fontFamilyRoboto
+  },
+  subTitle: {
+    color: theme.palette.primary.dark,
+    fontWeight: 'bold'
   },
   menuItem: {
     marginRight: '1.5rem',
     borderRadius: 0,
-    transition: '0.5s ease',
+    transition: '0.5s all ease-in-out',
     '&:hover': {
       borderBottom: '1px solid',
       borderColor: theme.palette.primary.dark,
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
+      transition: '0.5s all ease-in-out'
     }
   },
   activePage: {
@@ -94,7 +102,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     fontSize: '2rem',
     fontWeight: 'bold',
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+    fontFamily: theme.typography.fontFamilyRoboto
+  },
+  headerWrapper: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    marginTop: '5px'
   }
 }));
 
@@ -113,17 +128,8 @@ const Header = () => {
     setDrawer(!drawer);
   };
 
-  // const navigateToPage = page => {
-  //   history.push(page);
-  // };
-
-  // const navigateDesktop = path => {
-  //   navigateToPage(path);
-  // };
-
   const navigateMobile = path => {
     toggleDrawer(false);
-    // navigateToPage(path);
   };
 
   const renderMainMenu = (
@@ -153,7 +159,9 @@ const Header = () => {
       <Drawer open={drawer} anchor="left" onClose={toggleDrawer} PaperProps={{ classes: { root: classes.drawer } }}>
         <div className={classes.mobileMenuWrapper}>
           <div>
-            <Typography className={classes.menuListItemLogo}>SAP SOLS</Typography>
+            <Typography className={classes.menuListItemLogo} variant="h6">
+              KUS
+            </Typography>
             <Divider component="li" />
           </div>
           <List className={classes.menuList}>
@@ -180,10 +188,15 @@ const Header = () => {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h5" component={NavLink} to="/" className={classes.title}>
-            SAP SOLS
-          </Typography>
+        <Toolbar className={classes.headerWrapper}>
+          <NavLink className={classes.title} to="/">
+            <Typography variant="h4" className="font-bold">
+              KUS
+            </Typography>
+            <Typography variant="subtitle2" className={classes.subTitle}>
+              KEYUSER SOLUTIONS
+            </Typography>
+          </NavLink>
           <div className={classes.desktopNav}>{renderMainMenu}</div>
           <div className={classes.mobileNav}>{renderMobileMenu}</div>
         </Toolbar>
@@ -193,8 +206,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// logo/title => typography component h1 variant h1
-// responsive navabar
-// home | services | about | contact
-// hamburger => menu
