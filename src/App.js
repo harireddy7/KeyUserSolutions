@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/services" component={Services} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
-            <Route path="/" excat component={Home} />
+            <Route path="/" component={Home} />
           </Switch>
 
           <Footer />

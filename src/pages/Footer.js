@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.light.light,
     display: 'flex',
     justifyContent: 'center',
-    '& > img': {
+    '& img': {
       width: '250px'
     }
   },
@@ -95,7 +95,9 @@ const Footer = () => {
         </div>
         <Fade up>
           <div className={classes.footerLogo}>
-            <img src={logo} alt="logo" />
+            <NavLink to="/">
+              <img src={logo} alt="logo" />
+            </NavLink>
           </div>
         </Fade>
       </div>

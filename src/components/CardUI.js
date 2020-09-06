@@ -16,8 +16,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    transition: '0.3s transform ease-in-out',
     '&:hover': {
-      boxShadow: '0px 1px 3px 0px rgba(0,0,0,0.5)'
+      transform: 'translateY(-5px) scale(1.01)',
+      boxShadow: '0 5px 10px #aaa',
+      transition: '0.3s transform ease-in-out'
     }
   },
   cardIcon: {

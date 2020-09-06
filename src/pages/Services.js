@@ -67,7 +67,13 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    transition: '0.3s transform ease-in-out',
+    '&:hover': {
+      transform: 'translateY(-5px) scale(1.01)',
+      boxShadow: '0 5px 10px #aaa',
+      transition: '0.3s transform ease-in-out'
+    }
   },
   serviceCardIcon: {
     fontSize: '3rem',
@@ -88,7 +94,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'stretch',
     gridGap: '1rem',
     padding: '0 2rem',
-    // marginBottom: '2rem',
     [theme.breakpoints.only('xs')]: {
       gridTemplateColumns: 'minmax(150px, 1fr)',
       padding: '0 0.5rem'
@@ -98,8 +103,13 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '450px',
     maxHeight: '450px',
     padding: '0.5rem',
-    margin: '0 auto'
-    // border: '5px solid #f2f2f2'
+    margin: '0 auto',
+    transition: '0.3s transform ease-in-out',
+    '&:hover': {
+      transform: 'translateY(-5px) scale(1.01)',
+      boxShadow: '0 5px 10px #aaa',
+      transition: '0.3s transform ease-in-out'
+    }
   },
   productCardImg: {
     padding: '0.5rem 1rem',
@@ -117,7 +127,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main
   },
   clientsWrapper: {
-    // marginBottom: '2rem',
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 150px)',
     gridGap: '2rem',
@@ -135,7 +144,13 @@ const useStyles = makeStyles(theme => ({
     minHeight: '120px',
     display: 'flex',
     alignItems: 'center',
-    padding: '0 1rem'
+    padding: '0 1rem',
+    transition: '0.3s all ease-in-out',
+    '&:hover': {
+      transform: 'translateY(-5px) scale(1.01)',
+      boxShadow: '0 5px 10px #aaa',
+      transition: '0.3s all ease-in-out'
+    }
   },
   clientImg: {
     width: '100%'

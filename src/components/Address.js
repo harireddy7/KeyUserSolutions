@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   colorPrimary: {},
   addressText: {
+    marginLeft: '10px',
     color: ({ themeType }) => (themeType === 'light' ? theme.palette.primary.main : theme.palette.light.light),
     '@media (max-width: 300px)': {
       fontSize: '0.9rem'

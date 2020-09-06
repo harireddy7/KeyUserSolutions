@@ -20,10 +20,12 @@ const useStyles = makeStyles(theme => ({
     display: 'block'
   },
   successDialog: {
-    padding: '1rem 0.2rem',
     textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
-      padding: '1rem 2rem'
+    padding: '3rem 2rem'
+  },
+  closeBtn: {
+    '@media (max-width: 530px)': {
+      width: '100%'
     }
   }
 }));
@@ -209,7 +211,7 @@ const ContactForm = () => {
           <Dialog open={messageSent} onClose={handleCloseDialog}>
             <Typography className={classes.successDialog}>Thanks for the message, will contact you shortly!</Typography>
             <DialogActions>
-              <Button variant="contained" color="primary" onClick={handleCloseDialog}>
+              <Button variant="contained" color="primary" onClick={handleCloseDialog} className={classes.closeBtn}>
                 Close
               </Button>
             </DialogActions>
