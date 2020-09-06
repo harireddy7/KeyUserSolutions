@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from 'react';
 import { TextField, Button, Typography, Dialog, DialogActions } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -190,7 +191,17 @@ const ContactForm = () => {
           style={{ pointerEvents: formSubmitting ? 'none' : 'all' }}
           disabled={Object.values(errors).some(val => val)}
         >
-          {formSubmitting ? 'Sending Mesage...' : 'Send Message'}
+          {formSubmitting ? (
+            <div>
+              <FontAwesomeIcon icon="paper-plane" style={{ transform: 'rotate(50deg)' }} />
+              <span style={{ marginLeft: '10px' }}>Sending Mesage...</span>
+            </div>
+          ) : (
+            <div>
+              <FontAwesomeIcon icon="paper-plane" />
+              <span style={{ marginLeft: '10px' }}>Send Mesage</span>
+            </div>
+          )}
         </Button>
         {isFormInValid && <small className={classes.errorMsg}>Please fill in the form</small>}
 

@@ -1,16 +1,26 @@
-import React from 'react';
-import { Grid, Typography, Divider, Card, CardContent, CardMedia } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid, Typography, Divider, Card, CardContent, CardMedia, CardHeader, CardActionArea } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import servicesList, { clientsList } from '../utils/services-data';
-import ServiceCard from '../components/ServiceCard';
+import productsList, { clientsList, servicesList } from '../utils/services-data';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ProductDetails from '../components/ProductDetails';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: '1200px',
-    margin: '2rem auto',
+    // maxWidth: '1200px',
+    margin: '2rem',
     [theme.breakpoints.down('sm')]: {
       margin: '1rem 0.5rem'
     }
+  },
+  servicesContainer: {
+    margin: '5rem 0'
+  },
+  productsContainer: {
+    margin: '6rem 0'
+  },
+  clientssContainer: {
+    margin: '6rem 0'
   },
   sectionTitleWrapper: {
     height: '70px',
@@ -38,17 +48,72 @@ const useStyles = makeStyles(theme => ({
   },
   servicesWrapper: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    // margin: '3rem 0 5rem',
+    gridTemplateColumns: 'minmax(150px, 250px)',
+    justifyContent: 'center',
     gridGap: '1rem',
-    padding: '3rem 2rem',
-    marginBottom: '2rem',
-    [theme.breakpoints.only('xs')]: {
-      // padding: '1.5rem 1rem'
-      padding: '1.5rem 0'
+    [theme.breakpoints.up('sm')]: {
+      gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 250px))'
     }
   },
+  serviceCard: {
+    padding: '0.5rem',
+    textAlign: 'center',
+    minHeight: '150px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  serviceCardIcon: {
+    fontSize: '3rem',
+    color: theme.palette.primary.dark
+  },
+  serviceHeader: {
+    padding: 0,
+    fontWeight: 'bold'
+  },
+  serviceCardHeaderTitle: {
+    fontSize: '1rem',
+    color: theme.palette.primary.main
+  },
+  productsWrapper: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    gridGap: '1rem',
+    padding: '0 2rem',
+    // marginBottom: '2rem',
+    [theme.breakpoints.only('xs')]: {
+      gridTemplateColumns: 'minmax(150px, 1fr)',
+      padding: '0 0.5rem'
+    }
+  },
+  productCard: {
+    maxWidth: '450px',
+    maxHeight: '450px',
+    padding: '0.5rem',
+    margin: '0 auto'
+    // border: '5px solid #f2f2f2'
+  },
+  productCardImg: {
+    padding: '0.5rem 1rem',
+    width: '100%',
+    height: '100%'
+    // border: '1px solid'
+  },
+  productCardHeader: {
+    padding: '0.5rem',
+    fontWeight: 'bolder'
+  },
+  productCardHeaderTitle: {
+    textAlign: 'center',
+    fontSize: '1.1rem',
+    color: theme.palette.primary.main
+  },
   clientsWrapper: {
-    marginBottom: '2rem',
+    // marginBottom: '2rem',
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 150px)',
     gridGap: '2rem',
@@ -75,37 +140,82 @@ const useStyles = makeStyles(theme => ({
 
 const Services = () => {
   const classes = useStyles();
+  const [activeProduct, setActiveProduct] = useState(null);
+
+  const selectProduct = productId => {
+    setActiveProduct(productId);
+  };
+
+  const closeProductDialog = () => {
+    setActiveProduct(null);
+  };
+
+  const RenderHeaderTitle = ({ title }) => (
+    <Card elevation={0} className={classes.sectionTitleWrapper}>
+      <CardContent>
+        <Typography component="h3" className={classes.title} color="primary">
+          {title}
+        </Typography>
+        <Divider className={classes.titleDivider} variant="middle" />
+      </CardContent>
+    </Card>
+  );
+
   return (
     <div className={classes.root}>
-      <Card elevation={0} className={classes.sectionTitleWrapper}>
-        <CardContent>
-          <Typography component="h3" className={classes.title} color="primary">
-            Our Services
-          </Typography>
-          <Divider className={classes.titleDivider} variant="middle" />
-        </CardContent>
-      </Card>
-      <Grid item container className={classes.servicesWrapper}>
-        {servicesList.map(service => (
-          <Grid item key={service.title}>
-            <ServiceCard {...service} />
-          </Grid>
-        ))}
-      </Grid>
-      <Card elevation={0} className={classes.sectionTitleWrapper}>
-        <CardContent>
-          <Typography component="h3" className={classes.title} color="primary">
-            Our Clients
-          </Typography>
-          <Divider className={classes.titleDivider} variant="middle" />
-        </CardContent>
-      </Card>
-      <div className={classes.clientsWrapper}>
-        {clientsList.map(({ title, media }) => (
-          <Card key={title} className={classes.clientContainer}>
-            <CardMedia component="img" image={media} alt={title} className={classes.clientImg} />
-          </Card>
-        ))}
+      <div className={classes.servicesContainer}>
+        <RenderHeaderTitle title="Our Services" />
+        <Grid item container className={classes.servicesWrapper}>
+          {servicesList.map(({ title, icon }) => (
+            <Grid item key={icon}>
+              <Card className={classes.serviceCard}>
+                <FontAwesomeIcon icon={icon} className={classes.serviceCardIcon} />
+                <CardHeader
+                  title={title}
+                  className={classes.serviceCardHeader}
+                  classes={{ title: classes.serviceCardHeaderTitle }}
+                />
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+      <div className={classes.productsContainer}>
+        <RenderHeaderTitle title="Our Products" />
+        <Grid item container className={classes.productsWrapper}>
+          {productsList.map(product => (
+            <Grid item key={`${product.id}-${product.title}`}>
+              <Card className={classes.productCard}>
+                <CardActionArea onClick={() => selectProduct(product.id)}>
+                  <CardMedia
+                    component="img"
+                    alt={product.title}
+                    image={product.media}
+                    className={classes.productCardImg}
+                  />
+                  <CardHeader
+                    title={product.title}
+                    className={classes.productCardHeader}
+                    classes={{ title: classes.productCardHeaderTitle }}
+                  />
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+          {activeProduct !== null && (
+            <ProductDetails open closeDialog={closeProductDialog} product={productsList[activeProduct]} />
+          )}
+        </Grid>
+      </div>
+      <div className={classes.clientsContainer}>
+        <RenderHeaderTitle title="Our Clients" />
+        <div className={classes.clientsWrapper}>
+          {clientsList.map(({ title, media }) => (
+            <Card elevation={0} key={title} className={classes.clientContainer}>
+              <CardMedia component="img" image={media} alt={title} className={classes.clientImg} />
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ import {
   Divider
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -51,7 +51,8 @@ const useStyles = makeStyles(theme => ({
   },
   subTitle: {
     color: theme.palette.primary.dark,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '0.65rem'
   },
   menuItem: {
     marginRight: '1.5rem',
@@ -153,7 +154,7 @@ const Header = () => {
     <>
       <Tooltip title="Open Menu">
         <IconButton color="inherit" onClick={toggleDrawer}>
-          <FontAwesome name="bars" />
+          <FontAwesomeIcon icon="bars" />
         </IconButton>
       </Tooltip>
       <Drawer open={drawer} anchor="left" onClose={toggleDrawer} PaperProps={{ classes: { root: classes.drawer } }}>

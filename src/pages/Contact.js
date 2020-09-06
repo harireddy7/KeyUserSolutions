@@ -114,7 +114,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const addressList = [
-  { content: '7989785982', icon: 'phone', link: 'tel://7989785982' },
+  { content: '7989785982', icon: 'phone-alt', link: 'tel://7989785982' },
   { content: 'sales@keyusersolutions.com', icon: 'envelope', link: 'mailto:sales@keyusersolutions.com' }
 ];
 

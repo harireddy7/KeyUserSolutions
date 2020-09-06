@@ -25,7 +25,7 @@ const bioSections = [
   },
   {
     label: 'Our Vision',
-    icon: 'lightbulb-o',
+    icon: 'lightbulb',
     content:
       'KUS provides demand-driven supply chain management and enterprise software solutions that drive value for companies regardless of market conditions.'
   },

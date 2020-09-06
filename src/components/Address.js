@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const useStyles = makeStyles(theme => ({
   address: {
@@ -38,7 +38,7 @@ const Address = ({ addressList, themeType }) => {
       {addressList.map(({ content, link, icon }) => (
         <ListItem key={icon} className={classes.addressItem}>
           <ListItemIcon classes={{ root: classes.addressIcon }}>
-            <FontAwesome name={icon} />
+            <FontAwesomeIcon icon={icon} />
           </ListItemIcon>
           <ListItemText>
             <Link href={link} target="blank" classes={{ root: classes.addressText }}>

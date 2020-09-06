@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/styles';
 import showcasePersonDesktop from '../assets/showcase-full.png';
 import { NavLink } from 'react-router-dom';
 import Bio from '../components/Bio';
-// import showcasePersonMobile from '../assets/research.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -70,12 +69,19 @@ const useStyles = makeStyles(theme => ({
     height: '100%'
   },
   actionsWrapper: {},
-  actionBtn: {}
+  actionBtn: {
+    transition: '0.3s all ease-in-out',
+    '&:hover': {
+      background: theme.palette.primary.dark,
+      color: theme.palette.light.main,
+      transition: '0.3s all ease-in-out'
+    }
+  }
 }));
 
 const additionalActions = [
-  { label: 'About Us', path: '/about', variant: 'contained', color: 'primary' },
-  { label: 'Our Services', path: '/services', variant: 'outlined', color: 'default' }
+  { label: 'Our Services', path: '/services', variant: 'contained', color: 'primary' },
+  { label: 'About Us', path: '/about', variant: 'outlined', color: 'default' }
 ];
 
 const Home = () => {
