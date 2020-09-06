@@ -3,6 +3,10 @@ import { Grid, Typography, Divider, Card, CardContent, CardMedia, CardHeader, Ca
 import { makeStyles } from '@material-ui/styles';
 import productsList, { clientsList, servicesList } from '../utils/services-data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+
 import ProductDetails from '../components/ProductDetails';
 
 const useStyles = makeStyles(theme => ({
@@ -150,11 +154,13 @@ const Services = () => {
     setActiveProduct(null);
   };
 
-  const RenderHeaderTitle = ({ title }) => (
+  const RenderHeaderTitle = ({ title, Component = Fade }) => (
     <Card elevation={0} className={classes.sectionTitleWrapper}>
       <CardContent>
         <Typography component="h3" className={classes.title} color="primary">
-          {title}
+          <Component right cascade>
+            {title}
+          </Component>
         </Typography>
         <Divider className={classes.titleDivider} variant="middle" />
       </CardContent>
@@ -164,18 +170,20 @@ const Services = () => {
   return (
     <div className={classes.root}>
       <div className={classes.servicesContainer}>
-        <RenderHeaderTitle title="Our Services" />
+        <RenderHeaderTitle title="Our Services" Component={Zoom} />
         <Grid item container className={classes.servicesWrapper}>
           {servicesList.map(({ title, icon }) => (
             <Grid item key={icon}>
-              <Card className={classes.serviceCard}>
-                <FontAwesomeIcon icon={icon} className={classes.serviceCardIcon} />
-                <CardHeader
-                  title={title}
-                  className={classes.serviceCardHeader}
-                  classes={{ title: classes.serviceCardHeaderTitle }}
-                />
-              </Card>
+              <Fade up>
+                <Card className={classes.serviceCard}>
+                  <FontAwesomeIcon icon={icon} className={classes.serviceCardIcon} />
+                  <CardHeader
+                    title={title}
+                    className={classes.serviceCardHeader}
+                    classes={{ title: classes.serviceCardHeaderTitle }}
+                  />
+                </Card>
+              </Fade>
             </Grid>
           ))}
         </Grid>
@@ -185,21 +193,23 @@ const Services = () => {
         <Grid item container className={classes.productsWrapper}>
           {productsList.map(product => (
             <Grid item key={`${product.id}-${product.title}`}>
-              <Card className={classes.productCard}>
-                <CardActionArea onClick={() => selectProduct(product.id)}>
-                  <CardMedia
-                    component="img"
-                    alt={product.title}
-                    image={product.media}
-                    className={classes.productCardImg}
-                  />
-                  <CardHeader
-                    title={product.title}
-                    className={classes.productCardHeader}
-                    classes={{ title: classes.productCardHeaderTitle }}
-                  />
-                </CardActionArea>
-              </Card>
+              <Fade up>
+                <Card className={classes.productCard}>
+                  <CardActionArea onClick={() => selectProduct(product.id)}>
+                    <CardMedia
+                      component="img"
+                      alt={product.title}
+                      image={product.media}
+                      className={classes.productCardImg}
+                    />
+                    <CardHeader
+                      title={product.title}
+                      className={classes.productCardHeader}
+                      classes={{ title: classes.productCardHeaderTitle }}
+                    />
+                  </CardActionArea>
+                </Card>
+              </Fade>
             </Grid>
           ))}
           {activeProduct !== null && (
@@ -209,13 +219,15 @@ const Services = () => {
       </div>
       <div className={classes.clientsContainer}>
         <RenderHeaderTitle title="Our Clients" />
-        <div className={classes.clientsWrapper}>
-          {clientsList.map(({ title, media }) => (
-            <Card elevation={0} key={title} className={classes.clientContainer}>
-              <CardMedia component="img" image={media} alt={title} className={classes.clientImg} />
-            </Card>
-          ))}
-        </div>
+        <Fade up>
+          <div className={classes.clientsWrapper}>
+            {clientsList.map(({ title, media }) => (
+              <Card elevation={0} key={title} className={classes.clientContainer}>
+                <CardMedia component="img" image={media} alt={title} className={classes.clientImg} />
+              </Card>
+            ))}
+          </div>
+        </Fade>
       </div>
     </div>
   );

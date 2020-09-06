@@ -27,4 +27,10 @@ body {
 
 .font-bold {
   font-family: 'Roboto', sans-serif !important;
+  font-weight: 700;
+}
+.mainTitle > span {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 700;
+  font-size: 1.5rem;
 }

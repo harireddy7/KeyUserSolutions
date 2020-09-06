@@ -2,11 +2,15 @@ import React from 'react';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  fadeRoot: {
     minWidth: '250px',
     minHeight: '200px',
+    height: '100%'
+  },
+  root: {
     height: '100%',
     // margin: '0.5rem 1rem',
     display: 'flex',
@@ -29,18 +33,24 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold'
   },
   cardContent: {
-    textAlign: 'center'
+    textAlign: 'center',
+    maxHeight: '120px',
+    paddingBottom: '1.5rem'
   }
 }));
 
 const CardUI = ({ label, icon, content }) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
-      <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
-      <CardHeader title={label} className={classes.cardHeader} classes={{ title: classes.cardTitle }} />
-      <CardContent className={classes.cardContent}>{content}</CardContent>
-    </Card>
+    <Fade up>
+      <div className={classes.fadeRoot}>
+        <Card className={classes.root}>
+          <FontAwesomeIcon icon={icon} className={classes.cardIcon} />
+          <CardHeader title={label} className={classes.cardHeader} classes={{ title: classes.cardTitle }} />
+          <CardContent className={classes.cardContent}>{content}</CardContent>
+        </Card>
+      </div>
+    </Fade>
   );
 };
 

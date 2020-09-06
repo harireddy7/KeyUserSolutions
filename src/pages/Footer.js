@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import { ListItem, List } from '@material-ui/core';
 import { menuItems } from './Header';
 import { NavLink } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles(theme => ({
@@ -81,17 +83,21 @@ const Footer = () => {
     <div className={classes.footerWrapper}>
       <div className={classes.footerLogoRoutes}>
         <div className={classes.routes}>
-          <List className={classes.menuList}>
-            {menuItems.map(menu => (
-              <ListItem to={menu.path} exact component={NavLink} key={menu.label} className={classes.menuListItem}>
-                {menu.label}
-              </ListItem>
-            ))}
-          </List>
+          <Fade up cascade>
+            <List className={classes.menuList}>
+              {menuItems.map(menu => (
+                <ListItem to={menu.path} exact component={NavLink} key={menu.label} className={classes.menuListItem}>
+                  {menu.label}
+                </ListItem>
+              ))}
+            </List>
+          </Fade>
         </div>
-        <div className={classes.footerLogo}>
-          <img src={logo} alt="logo" />
-        </div>
+        <Fade up>
+          <div className={classes.footerLogo}>
+            <img src={logo} alt="logo" />
+          </div>
+        </Fade>
       </div>
       <div className={classes.copy}>&copy; CopyRight AllRights Reserved By KeyUser</div>
     </div>

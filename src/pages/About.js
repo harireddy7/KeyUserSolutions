@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Typography, Card, CardMedia, CardContent, Divider, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Fade from 'react-reveal/Fade';
 
 import aboutUsImg from '../assets/team.png';
 
@@ -82,37 +83,45 @@ const About = () => {
   return (
     <>
       <div className={classes.root}>
-        <Card elevation={0} className={classes.showcaseImgWrapper}>
-          <CardMedia image={aboutUsImg} component="img" alt="showcase-image" className={classes.showcaseImg} />
-        </Card>
+        <Fade left>
+          <Card elevation={0} className={classes.showcaseImgWrapper}>
+            <CardMedia image={aboutUsImg} component="img" alt="showcase-image" className={classes.showcaseImg} />
+          </Card>
+        </Fade>
         <Card elevation={0} className={classes.aboutContent}>
-          <Typography component="h3" color="primary" className={classes.title}>
-            About Us
-            <Divider className={classes.titleDivider} variant="middle" />
-          </Typography>
-          <CardContent>
-            <Typography variant="subtitle1" className={`${classes.subTitle} bg-shape-1`}>
-              We provide services to clients from various industries like Hospitality, Healthcare, Services, Tourism, IT
-              Companies, Infrastructure, Retailers, Real Estate, Manufacturing, Banks & Online Media houses. We
-              understand that for the success of any project Time, Quality and Support has to be top class, for this our
-              planning & quality control team make sure that your projects are very planned & designed to be delivered
-              on time & also the quality of the project is more than what you have expected.
+          <Fade up>
+            <Typography component="h3" color="primary" className={classes.title}>
+              About Us
+              <Divider className={classes.titleDivider} variant="middle" />
             </Typography>
-          </CardContent>
-          <CardActions className={classes.actionsWrapper}>
-            {additionalActions.map(({ label, path, variant, color }) => (
-              <Button
-                to={path}
-                component={NavLink}
-                key={label}
-                variant={variant}
-                color={color}
-                className={classes.actionBtn}
-              >
-                {label}
-              </Button>
-            ))}
-          </CardActions>
+
+            <CardContent>
+              <Typography variant="subtitle1" className={`${classes.subTitle} bg-shape-1`}>
+                We provide services to clients from various industries like Hospitality, Healthcare, Services, Tourism,
+                IT Companies, Infrastructure, Retailers, Real Estate, Manufacturing, Banks & Online Media houses. We
+                understand that for the success of any project Time, Quality and Support has to be top class, for this
+                our planning & quality control team make sure that your projects are very planned & designed to be
+                delivered on time & also the quality of the project is more than what you have expected.
+              </Typography>
+            </CardContent>
+
+            <CardActions className={classes.actionsWrapper}>
+              {additionalActions.map(({ label, path, variant, color }) => (
+                <Fade right cascade key={label}>
+                  <Button
+                    to={path}
+                    component={NavLink}
+                    key={label}
+                    variant={variant}
+                    color={color}
+                    className={classes.actionBtn}
+                  >
+                    {label}
+                  </Button>
+                </Fade>
+              ))}
+            </CardActions>
+          </Fade>
         </Card>
       </div>
     </>

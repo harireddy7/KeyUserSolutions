@@ -14,6 +14,7 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,8 +47,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     fontWeight: 'bold',
     textDecoration: 'none',
-    color: theme.palette.primary.main,
-    fontFamily: theme.typography.fontFamilyRoboto
+    color: theme.palette.primary.main
   },
   subTitle: {
     color: theme.palette.primary.dark,
@@ -191,8 +191,8 @@ const Header = () => {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.headerWrapper}>
           <NavLink className={classes.title} to="/">
-            <Typography variant="h4" className="font-bold">
-              KUS
+            <Typography component={Zoom} left cascade>
+              <span className="mainTitle">KUS</span>
             </Typography>
             <Typography variant="subtitle2" className={classes.subTitle}>
               KEYUSER SOLUTIONS

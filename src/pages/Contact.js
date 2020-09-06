@@ -2,6 +2,9 @@ import React from 'react';
 import { Typography, Divider, Card, CardContent, CardMedia, CardHeader } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+
 import contactImg from '../assets/contact.png';
 import Address from '../components/Address';
 import ContactForm from '../components/ContactForm';
@@ -60,6 +63,9 @@ const useStyles = makeStyles(theme => ({
     '@media (max-width: 330px)': {
       gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))'
     }
+  },
+  addressFadeCard: {
+    minHeight: '250px'
   },
   officeAddress: {
     color: theme.palette.primary.dark
@@ -126,49 +132,57 @@ const Contact = () => {
       <Card elevation={0} className={classes.sectionTitleWrapper}>
         <CardContent>
           <Typography component="h3" className={classes.title} color="primary">
-            CONTACT US
+            <Zoom right cascade>
+              CONTACT US
+            </Zoom>
           </Typography>
           <Divider className={classes.titleDivider} variant="middle" />
         </CardContent>
       </Card>
       <div className={classes.contactMainWrapper}>
-        <div className={classes.contactWrapper}>
-          <Card className={classes.officeAddress}>
-            <CardHeader title="Office Address" classes={{ title: classes.headerTitle }} />
-            <Divider className={classes.titleDivider} variant="middle" />
-            <CardContent>
-              <Typography className={classes.subtitle1} variant="subtitle1">
-                2-119/cp/402, Nizampet Village, Hyderabad 500090
-              </Typography>
-            </CardContent>
-          </Card>
-          <Card className={classes.contactInfo}>
-            <CardHeader title="Contact Info" classes={{ title: classes.headerTitle }} />
-            <Divider className={classes.titleDivider} variant="middle" />
-            <CardContent style={{ paddingTop: '0.2rem' }}>
-              <Address addressList={addressList} themeType={theme.palette.type} />
-            </CardContent>
-          </Card>
-        </div>
+        <Fade bottom cascade>
+          <div className={classes.contactWrapper}>
+            <Card className={classes.officeAddress}>
+              <CardHeader title="Office Address" classes={{ title: classes.headerTitle }} />
+              <Divider className={classes.titleDivider} variant="middle" />
+              <CardContent>
+                <Typography className={classes.subtitle1} variant="subtitle1">
+                  2-119/cp/402, Nizampet Village, Hyderabad 500090
+                </Typography>
+              </CardContent>
+            </Card>
+
+            <Card className={classes.contactInfo}>
+              <CardHeader title="Contact Info" classes={{ title: classes.headerTitle }} />
+              <Divider className={classes.titleDivider} variant="middle" />
+              <CardContent style={{ paddingTop: '0.2rem' }}>
+                <Address addressList={addressList} themeType={theme.palette.type} />
+              </CardContent>
+            </Card>
+          </div>
+        </Fade>
       </div>
       <Card className={classes.contactFormWraper}>
         <CardContent className={classes.contactForm}>
           <Card className={classes.sectionTitleWrapper}>
-            <Typography component="h3" className={classes.title} color="primary">
-              GET IN TOUCH
-              <Divider className={classes.titleDivider} variant="middle" />
-            </Typography>
-            <Typography variant="subtitle2" align="center" component="h6"></Typography>
+            <Fade bottom cascade>
+              <Typography component="h3" className={classes.title} color="primary">
+                GET IN TOUCH
+                <Divider className={classes.titleDivider} variant="middle" />
+              </Typography>
+            </Fade>
           </Card>
           <ContactForm />
         </CardContent>
         <Card elevation={0} className={classes.contactImg}>
-          <CardMedia
-            component="img"
-            alt="send message image"
-            image={contactImg}
-            className={classes.contactImgWrapper}
-          />
+          <Fade right cascade>
+            <CardMedia
+              component="img"
+              alt="send message image"
+              image={contactImg}
+              className={classes.contactImgWrapper}
+            />
+          </Fade>
         </Card>
       </Card>
     </div>

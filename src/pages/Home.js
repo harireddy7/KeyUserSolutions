@@ -2,15 +2,19 @@ import React from 'react';
 import { Typography, Card, CardMedia, CardContent, Divider, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-import showcasePersonDesktop from '../assets/showcase-full.png';
 import { NavLink } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+
 import Bio from '../components/Bio';
+import showcasePersonDesktop from '../assets/showcase-full.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     maxWidth: '1200px',
-    margin: '0 auto',
+    minHeight: '75vh',
+    margin: '3rem auto',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column'
     }
@@ -89,40 +93,41 @@ const Home = () => {
   return (
     <>
       <div className={classes.root}>
-        <Card elevation={0} className={classes.showcaseImgWrapper}>
-          <CardMedia
-            image={showcasePersonDesktop}
-            component="img"
-            alt="showcase-image"
-            className={classes.showcaseImg}
-          />
-        </Card>
+        <Fade left>
+          <Card elevation={0} className={classes.showcaseImgWrapper}>
+            <CardMedia
+              image={showcasePersonDesktop}
+              component="img"
+              alt="showcase-image"
+              className={classes.showcaseImg}
+            />
+          </Card>
+        </Fade>
         <Card elevation={0} className={classes.showcaseContent}>
-          <CardContent>
-            <Typography component="h3" color="primary" className={classes.title}>
-              Welcome To <span title="KeyUser Solutions">KUS</span>
-            </Typography>
-            <Divider className={classes.titleDivider} variant="middle" />
-            <Typography variant="subtitle1" className={`${classes.subTitle} bg-shape-1`}>
-              We as a company working with countries over the globe and counting, you can be rest assured that your
-              achievements and goals scale boundaries and roles. Employee growth is exponential for people who choose to
-              go the extra mile.
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.actionsWrapper}>
-            {additionalActions.map(({ label, path, variant, color }) => (
-              <Button
-                to={path}
-                component={NavLink}
-                key={label}
-                variant={variant}
-                color={color}
-                className={classes.actionBtn}
-              >
-                {label}
-              </Button>
-            ))}
-          </CardActions>
+          <Fade bottom cascade>
+            <CardContent>
+              <Typography component="h3" color="primary" className={classes.title}>
+                <Zoom right cascade className={classes.title}>
+                  Welcome To KUS
+                </Zoom>
+              </Typography>
+              <Divider className={classes.titleDivider} variant="middle" />
+              <Typography variant="subtitle1" className={`${classes.subTitle} bg-shape-1`}>
+                We as a company working with countries over the globe and counting, you can be rest assured that your
+                achievements and goals scale boundaries and roles. Employee growth is exponential for people who choose
+                to go the extra mile.
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.actionsWrapper}>
+              {additionalActions.map(({ label, path, variant, color }) => (
+                <Fade right cascade key={label}>
+                  <Button to={path} component={NavLink} variant={variant} color={color} className={classes.actionBtn}>
+                    {label}
+                  </Button>
+                </Fade>
+              ))}
+            </CardActions>
+          </Fade>
         </Card>
       </div>
       <Bio />
